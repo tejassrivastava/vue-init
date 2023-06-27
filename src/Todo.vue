@@ -1,6 +1,6 @@
 <script setup>
 import { computed, ref } from 'vue';
-
+import Button from './Button.vue';
 const todos = ref(
     [
         { id: 1, title: "Item 1", checked: false },
@@ -8,14 +8,22 @@ const todos = ref(
         { id: 3, title: "Item 3", checked: false },
     ]
 
-    
-)
 
-const completedTodos = computed(()=>{
+)
+const newTodo = ref('');
+const addTodo = () => {
+
+    console.log("in addTodo :", newTodo.value)
+
+
+    todos.value.push({ id: todos.value.length + 1, title: newTodo.value.toString(), checked: false })
+    newTodo.value = ''
+}
+const completedTodos = computed(() => {
     return todos.value.filter(a => a.checked)
 })
-const inProgressTodos = computed(()=>{
-    return todos.value.filter(a => ! a.checked)
+const inProgressTodos = computed(() => {
+    return todos.value.filter(a => !a.checked)
 })
 </script>
 <template>
@@ -45,5 +53,11 @@ const inProgressTodos = computed(()=>{
 
             </li>
         </ul>
+
     </section>
+    <form @submit.prevent="addTodo">
+        <input v-model="newTodo" type="text" />
+        <button type="submit">+</button>
+    </form>
+    <Button type="primary" :processing="true"></Button>
 </template>

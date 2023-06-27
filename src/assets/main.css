@@ -1,0 +1,21 @@
+.btnPrimary{
+  background-color: lightblue;
+}
+
+.btnMuted{
+  background-color: gray;
+}
+
+.btnDefault{
+  background-color: rgb(255, 0, 0);
+
+}
+
+.btnNone{
+  background-color: black;
+}
+
+.btnIsLoading{
+  background-color: white;
+  color: black
+}
