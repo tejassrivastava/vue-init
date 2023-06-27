@@ -19,3 +19,9 @@
   background-color: white;
   color: black
 }
+
+.activeTag{
+
+  border-color: rgb(255, 0, 93);
+  color: rgb(255, 0, 93);
+}
