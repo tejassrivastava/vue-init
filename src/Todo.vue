@@ -1,7 +1,9 @@
 <script setup>
 import { computed, ref } from 'vue';
 import Button from './Button.vue';
-import TodoCreate from "./TodoCreate.vue";
+// import MouseMove from './MouseMove.vue';
+import { useMouse } from './composables/useMouse.js';
+import TodoCreate from "@/TodoCreate.vue";
 const todos = ref(
     [
         { id: 1, title: "Item 1", checked: false, tag: 'math' },
@@ -38,6 +40,8 @@ const handleTagClick = (tag) => {
     
 
 }
+const { x, y } = useMouse();
+
 </script>
 <template>
     <h1>TODO</h1>
@@ -70,5 +74,16 @@ const handleTagClick = (tag) => {
         
     </section>
     <TodoCreate @todoAdd="todoAdd" :todoadd="todoAdd"></TodoCreate>
-    <Button type="primary" :processing="true"></Button>
+    
+    <Button type="primary" :processing="true">
+        <template #a>
+        <h2>a</h2>
+    </template>
+        <h2>b</h2>
+    
+    </Button>
+    <!-- <MouseMove></MouseMove> -->
+    s {{ x }} , {{ y }}
+    <template>Mouse position is at: {{ x }}, {{ y }}</template>
+    <p>{{ x }} , {{ y }}</p>
 </template>

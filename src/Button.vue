@@ -25,5 +25,6 @@ const props = defineProps({
     btnIsLoading: processing === true
 
 }" :disabled="processing"> Button </button>
-
+<slot></slot>
+<slot name="a"></slot>
 </template>
