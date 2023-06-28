@@ -3,6 +3,7 @@ import { computed, ref } from 'vue';
 import Button from './Button.vue';
 // import MouseMove from './MouseMove.vue';
 import { useMouse } from './composables/useMouse.js';
+import { useStorage } from './composables/useStorage.js'
 import TodoCreate from "@/TodoCreate.vue";
 const todos = ref(
     [
@@ -13,7 +14,7 @@ const todos = ref(
 
 
 )
-
+const pick = ref()
 const tags = ref([
    'all', 'science', 'math', 'reading'
 ])
@@ -41,7 +42,8 @@ const handleTagClick = (tag) => {
 
 }
 const { x, y } = useMouse();
-
+let food = useStorage('food','salad')
+let age = useStorage('age', 27)
 </script>
 <template>
     <h1>TODO</h1>
@@ -83,7 +85,23 @@ const { x, y } = useMouse();
     
     </Button>
     <!-- <MouseMove></MouseMove> -->
-    s {{ x }} , {{ y }}
-    <template>Mouse position is at: {{ x }}, {{ y }}</template>
-    <p>{{ x }} , {{ y }}</p>
+  
+    <!-- <template>Mouse position is at: {{ x }}, {{ y }}</template>
+    <p>{{ x }} , {{ y }}</p> -->
+
+
+
+<section>
+    <p>
+        What is your fav food ? <input type="text" v-model="food" />
+    </p>
+
+    <p>
+        What is your age ? <input type="text" v-model="age" />
+    </p>
+</section>
+<input type="radio" v-model="pick" :value="first" />
+<input type="radio" v-model="pick" :value="second" />
+
+
 </template>
